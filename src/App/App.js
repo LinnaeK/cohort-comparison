@@ -1,9 +1,10 @@
 import './App.css';
+import ComparisonForm from '../ComparisonForm/ComparisonForm'
 
 function App() {
   return (
     <div className="App">
-      <div>Clean Slate</div>
+      <ComparisonForm />
     </div>
   );
 }

@@ -1,0 +1,54 @@
+.body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.MainHeader {
+  padding: 0 2em;
+  position: sticky;
+  z-index: 40;
+  left: 0px;
+  top: 0px;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+}
+
+.MainFooter {
+  padding: 0 2em;
+  position: sticky;
+  z-index: 40;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 60px;
+  border-top: 1.5px solid rgb(235,	237,	241	);
+  background-color: rgb(255, 255, 255);
+}
+
+.container {
+  margin-left: .5em;
+  margin-right: .5em;
+  overflow-y: auto;
+  position: relative;
+  height: 1000px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+display: block;
+background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(255,	255,	255	);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(73,	85,	115	);
+  border-radius: 100px;
+}
