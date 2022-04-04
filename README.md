@@ -29,3 +29,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+Credits: 
+Multi Range Slider, by Sandra Lewis
+https://codesandbox.io/s/multi-range-slider-react-js-ecwcr?from-embed
