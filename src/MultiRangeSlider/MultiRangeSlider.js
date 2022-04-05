@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from "react"
-import PropTypes from "prop-types"
-import "./Slider.css"
+import "./MultiRangeSlider.css"
 
 const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => {
   const [minVal, setMinVal] = useState(min)
@@ -10,6 +9,7 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
   const minValRef = useRef(min)
   const maxValRef = useRef(max)
   const range = useRef(null)
+  const multiplier = 73.5/(max-min)
 
   // Convert to percentage
   const getPercent = useCallback(
@@ -17,6 +17,7 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
     [min, max]
   )
 
+  // Reset values to default
   const handleClearClick = () => {
     setMinVal(min)
     minValRef.current=min
@@ -28,29 +29,30 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
   useEffect(() => {
     const minPercent = getPercent(minVal)
     const maxPercent = getPercent(maxValRef.current)
-    const multiplier = 73.5/(max-min)
 
+    // set bubble position
     setMinPos((minVal-min) * multiplier)
 
+    // set slider position
     if (range.current) {
       range.current.style.left = `${minPercent}%`
       range.current.style.width = `${maxPercent - minPercent}%`
     }
-  }, [minVal, getPercent, max, min])
+  }, [minVal, getPercent, min, multiplier])
 
   // Set width of the range to decrease from the right side
   useEffect(() => {
     const minPercent = getPercent(minValRef.current)
     const maxPercent = getPercent(maxVal)
-    const multiplier = 73.5/(max-min)
 
-    // setMaxPos(Number((maxVal-min) * 33.6))
+    // set bubble position
     setMaxPos(Number(((maxVal-min)*multiplier)))
 
+    // set slider position
     if (range.current) {
       range.current.style.width = `${maxPercent - minPercent}%`
     }
-  }, [maxVal, getPercent, max, min])
+  }, [maxVal, getPercent, min, multiplier])
 
   return (
     <div>
@@ -112,15 +114,6 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
       </div>
     </div>
   )
-}
-
-MultiRangeSlider.propTypes = {
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-  categoryLabel: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  step: PropTypes.number
 }
 
 export default MultiRangeSlider

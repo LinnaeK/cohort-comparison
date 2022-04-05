@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './ComparisonForm.module.css'
-import Slider from '../Slider/Slider'
+import MultiRangeSlider from '../MultiRangeSlider/MultiRangeSlider'
 
 class ComparisonForm extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class ComparisonForm extends React.Component {
       <div className={styles.body}>
         <div className={styles.MainHeader}>Cohort Comparison Filters</div>
         <div className={styles.container}>
-          <Slider 
+          <MultiRangeSlider 
             min={this.state.startingWeightRange.min}
             max={this.state.startingWeightRange.max}
             onChange={(ranges) => this.handleRangeChange(ranges)}
@@ -45,7 +45,7 @@ class ComparisonForm extends React.Component {
             type="number"
             step={15}
           />
-          <Slider 
+          <MultiRangeSlider 
             min={this.state.startingHeightRange.min}
             max={this.state.startingHeightRange.max}
             onChange={(ranges) => this.handleRangeChange(ranges)}
