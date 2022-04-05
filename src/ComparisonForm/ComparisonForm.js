@@ -6,21 +6,29 @@ class ComparisonForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      startingSizeRange: {
-        min: 0,
-        max: 100
+      startingWeightRange: {
+        min: 70,
+        max: 295
       },
-      currentSizeRange: {
-        min: 0,
-        max: 100
+      currentWeightRange: {
+        min: 70,
+        max: 295
+      },
+      startingHeightRange: {
+        min:56, 
+        max: 84
+      },
+      currentHeightRange: {
+        min: 56,
+        max: 84
       }
     }
   }
 
-  handleRangeChange = (ranges) => {
+  handleRangeChange = (rangeType, ranges) => {
     this.setState({
       ...this.state,
-      currentSizeRange: ranges
+      [rangeType]: ranges
     })
   }
 
@@ -30,12 +38,21 @@ class ComparisonForm extends React.Component {
         <div className={styles.MainHeader}>Cohort Comparison Filters</div>
         <div className={styles.container}>
           <Slider 
-            min={this.state.startingSizeRange.min}
-            max={this.state.startingSizeRange.max}
+            min={this.state.startingWeightRange.min}
+            max={this.state.startingWeightRange.max}
             onChange={(ranges) => this.handleRangeChange(ranges)}
+            categoryLabel="Weight Range (lbs)"
+            type="number"
+            step={15}
           />
-          Main Form Elements
-          Main Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form ElementsMain Form Elements
+          <Slider 
+            min={this.state.startingHeightRange.min}
+            max={this.state.startingHeightRange.max}
+            onChange={(ranges) => this.handleRangeChange(ranges)}
+            categoryLabel="Height Range (feet-inches)"
+            type="number"
+            step={4}
+          />
         </div>
         <div className={styles.MainFooter}>Footer with Buttons</div>
       </div>

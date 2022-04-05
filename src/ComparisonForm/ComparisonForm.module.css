@@ -4,17 +4,21 @@
 }
 
 .MainHeader {
-  padding: 0 2em;
+  padding-left: 7vw;
   position: sticky;
   z-index: 40;
   left: 0px;
   top: 0px;
   height: 100px;
   background-color: rgb(255, 255, 255);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  margin-top: 42px;
 }
 
 .MainFooter {
-  padding: 0 2em;
+  padding-left: 7vw;
   position: sticky;
   z-index: 40;
   left: 0px;
@@ -26,8 +30,8 @@
 }
 
 .container {
-  margin-left: .5em;
-  margin-right: .5em;
+  margin-left: 7vw;
+  margin-right: 7vw;
   overflow-y: auto;
   position: relative;
   height: 1000px;

@@ -1,13 +1,27 @@
 .container {
-  height: 30vh;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.label {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.clear {
+  cursor: pointer;
+}
+
 .slider {
   position: relative;
-  width: 80vw;
+  width: 75vw;
 }
 
 .slider__track,
@@ -66,7 +80,7 @@
   pointer-events: none;
   position: absolute;
   height: 0;
-  width: 80vw;
+  width: 75vw;
   outline: none;
 }
 
@@ -109,24 +123,37 @@
 .bubble {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
-  padding: 12px 4px;
+  padding: 8px;
   border-radius: 8px;
-  margin-top: -70px;
-  margin-left: -12px;
-  width: 40px;
+  max-width: 150px;
   text-align: center;
-  position:absolute;
+  position:relative;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.maxBubbleContainer,
+.minBubbleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -65px;
+  margin-left: -65px;;
+  position: absolute;
+  width: 150px;
+  z-index: 10;
 }
 
 .arrowDown {
   width: 0; 
   height: 0; 
+  margin-top: -4px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid rgb(0,0,0);
-  margin-top: -30px;
-  margin-left: 2px;
-  position: absolute;
+  position: relative;
 }
 
 
