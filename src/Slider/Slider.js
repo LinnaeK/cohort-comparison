@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from "react"
 import PropTypes from "prop-types"
 import "./Slider.css"
-import ValueLabel from "../ValueLabel/ValueLabel"
 
 const MultiRangeSlider = ({ min, max, onChange }) => {
   const [minVal, setMinVal] = useState(min)
