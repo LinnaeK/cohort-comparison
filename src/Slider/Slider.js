@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from "react"
 import PropTypes from "prop-types"
 import "./Slider.css"
 
-const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step }) => {
+const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => {
   const [minVal, setMinVal] = useState(min)
   const [maxVal, setMaxVal] = useState(max)
   const [minPos, setMinPos] = useState(min*9.4)
@@ -99,12 +99,13 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step }) => {
           <div ref={range} className="slider__range" />
           <div className="slider__left-value">{minVal}</div>
           <div className="maxBubbleContainer" style={{left: `${maxPos}vw`}}>
-            <div className="maxBubble bubble"> {maxVal===max ? 'Over' : ''} {maxVal} </div>
+            <div className="maxBubble bubble"> {maxVal===max ? 'Over' : ''} {type==="feet-inches" ? `${Math.floor(maxVal/12)}' ${maxVal%12}"`:maxVal}
+            </div>
             <div className="arrowDown maxArrow"></div>
           </div>
           <div className="slider__right-value">{maxVal}</div>
           <div className="minBubbleContainer" style={{left: `${minPos}vw`}}>
-            <div className="bubble"> {minVal===min ? 'Under' : ''} {minVal} </div>
+            <div className="bubble"> {minVal===min ? 'Under' : ''} {type==="feet-inches" ? `${Math.floor(minVal/12)}' ${minVal%12}"`:minVal} </div>
             <div className="arrowDown"></div>
           </div>
         </div>

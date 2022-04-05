@@ -50,7 +50,7 @@ class ComparisonForm extends React.Component {
             max={this.state.startingHeightRange.max}
             onChange={(ranges) => this.handleRangeChange(ranges)}
             categoryLabel="Height Range (feet-inches)"
-            type="number"
+            type="feet-inches"
             step={4}
           />
         </div>
