@@ -1,0 +1,17 @@
+.showSports {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+.icon {
+  padding-right: 1vw;
+}
+
+.sportContainer {
+  padding-left: 4.2vw;
+  padding-right: 4.2vw;
+}
