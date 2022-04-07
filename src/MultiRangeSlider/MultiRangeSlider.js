@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState, useRef } from "react"
 import "./MultiRangeSlider.css"
 
 const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, step, type }) => {
-  // const [minVal, setMinVal] = useState(min)
-  // const [maxVal, setMaxVal] = useState(max)
   const [minPos, setMinPos] = useState(min*9.4)
   const [maxPos, setMaxPos] = useState(max*9.4)
   const minValRef = useRef(min)
@@ -19,9 +17,7 @@ const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, s
 
   // Reset values to default
   const handleClearClick = () => {
-    // setMinVal(min)
     minValRef.current=min
-    // setMaxVal(max)
     maxValRef.current=max
     onChange(type, { min: min, max: max })
   }
@@ -73,7 +69,6 @@ const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, s
           value={minVal}
           onChange={(event) => {
             const value = Math.min(Number(event.target.value), maxVal - 1)
-            // setMinVal(value)
             minValRef.current = value
             onChange(type, { min: value, max: maxVal })
           }}
@@ -89,7 +84,6 @@ const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, s
           value={maxVal}
           onChange={(event) => {
             const value = Math.max(Number(event.target.value), minVal + 1)
-            // setMaxVal(value)
             maxValRef.current = value
             onChange(type, { min: minVal, max: value })
           }}
