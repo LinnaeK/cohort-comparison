@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './Sports.css'
 
-const Sports = function({selectedSport, handleRadioClick}) {
+const Sports = function({value, handleRadioClick}) {
   const [sportOptions ] = useState({
     'all' : 'All',
     'baseball':'Baseball',
@@ -27,10 +27,11 @@ const Sports = function({selectedSport, handleRadioClick}) {
 
   return (
     <div className="sportContainer">
+      <div> {value} </div>
       <RadioGroup 
         label="Sports"
         options={sportOptions}
-        value={selectedSport}
+        value={value}
         handleRadioClick={(selection) => handleRadioClick(selection)}
         displayNumber={displayNumber}
       />
