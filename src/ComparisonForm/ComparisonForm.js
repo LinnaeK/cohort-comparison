@@ -7,51 +7,77 @@ import Positions from '../Positions/Positions'
 class ComparisonForm extends React.Component {
   constructor(props) {
     super(props)
+    this.handleRangeChange=this.handleRangeChange.bind(this)
+    this.handleRadioClick=this.handleRadioClick.bind(this)
+    this.handleCancelClick=this.handleCancelClick.bind(this)
+    this.handleSubmitClick=this.handleSubmitClick.bind(this)
     this.state = {
       form: {
         sport: '',
-        position: ''
+        position: '',
+        weight: {
+          min: 70,
+          max: 295
+        },
+        height: {
+          min: 62,
+          max: 82
+        }
       },
-      startingWeightRange: {
+      startingWeight: {
         min: 70,
         max: 295
       },
-      currentWeightRange: {
-        min: 70,
-        max: 295
+      startingHeight: {
+        min:62, 
+        max: 82
       },
-      startingHeightRange: {
-        min:56, 
-        max: 84
-      },
-      currentHeightRange: {
-        min: 56,
-        max: 84
-      }
     }
   }
 
   handleRangeChange = (rangeType, ranges) => {
-    this.setState({
-      ...this.state,
+    console.log('handleRangeChange', rangeType, ranges)
+    const updatedForm = {
+      ...this.state.form,
       [rangeType]: ranges
+    }
+    this.setState({
+      form: updatedForm
     })
   }
 
   handleRadioClick = (radioType, e) => {
     console.log('radioType', radioType, 'e', e.target.value)
+    const updatedForm = {
+      ...this.state.form,
+      [radioType]:e.target.value,
+    }
+    console.log('updatedForm', updatedForm)
     this.setState({
-      ...this.state,
-      [radioType]: e.target.value
+      form: updatedForm
+    })
+    console.log('set', this.state.form.sport)
+  }
+
+  handleCancelClick = () => {
+    this.setState({
+      form: {
+        sport: '',
+        position: '',
+        weight: {
+          min: 70,
+          max: 295
+        },
+        height: {
+          min: 62,
+          max: 82
+        }
+      },
     })
   }
 
-  handlCancelClick = () => {
-    console.log('handle cancel')
-  }
-
   handleSubmitClick = () => {
-    console.log(JSON.stringify(this.state.form))
+    console.log(`You have selected: ${JSON.stringify(this.state.form)}`)
   }
 
   render() {
@@ -61,38 +87,43 @@ class ComparisonForm extends React.Component {
           <div className={styles.MainHeader}>Cohort Comparison Filters</div>
           <MultiRangeSlider
             key="weight" 
-            min={this.state.startingWeightRange.min}
-            max={this.state.startingWeightRange.max}
-            onChange={(ranges) => this.handleRangeChange(ranges)}
+            min={this.state.startingWeight.min}
+            max={this.state.startingWeight.max}
+            minVal={this.state.form.weight.min}
+            maxVal={this.state.form.weight.max}
+            onChange={this.handleRangeChange}
             categoryLabel="Weight Range (lbs)"
-            type="number"
+            type="weight"
             step={15}
           />
           <MultiRangeSlider
             key="height" 
-            min={this.state.startingHeightRange.min}
-            max={this.state.startingHeightRange.max}
-            onChange={(ranges) => this.handleRangeChange(ranges)}
+            min={this.state.startingHeight.min}
+            max={this.state.startingHeight.max}
+            minVal={this.state.form.height.min}
+            maxVal={this.state.form.height.max}
+            onChange={this.handleRangeChange}
             categoryLabel="Height Range (feet-inches)"
-            type="feet-inches"
+            type="height"
             step={4}
           />
           <Sports
             key="sportRadio"
-            selectedSport={this.state.form.sport}
+            value={this.state.form.sport}
             handleRadioClick={(selection)=>this.handleRadioClick('sport', selection)}
           />
           <Positions
             key="positionRadio"
             selectedPosition={this.state.form.position}
             handleRadioClick={(selection)=>this.handleRadioClick('position', selection)}
+            sportSelection={!!this.state.form.sport}
           />
         </div>
         <div className={styles.MainFooter}>
           <input
             className={styles.cancelButton}
             type="button"
-            onClick={this.handlCancelClick}
+            onClick={this.handleCancelClick}
             value="Cancel"
           />
           <div className={styles.outerSubmitButton}>
