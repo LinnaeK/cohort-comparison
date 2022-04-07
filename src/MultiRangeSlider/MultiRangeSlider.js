@@ -52,7 +52,7 @@ const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, s
   }, [maxVal, getPercent, min, multiplier])
 
   return (
-    <div>
+    <div data-test-id="multiRangeSlider">
       <div className="label">
         <div>{categoryLabel}</div>
         <div  
@@ -94,15 +94,19 @@ const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, s
         <div className="slider">
           <div className="slider__track" />
           <div ref={range} className="slider__range" />
-          <div className="slider__left-value">{minVal}</div>
           <div className="maxBubbleContainer" style={{left: `${maxPos}vw`}}>
-            <div className="maxBubble bubble"> {maxVal===max ? 'Over' : ''} {type==="height" ? `${Math.floor(maxVal/12)}' ${maxVal%12}"`:maxVal}
+            <div 
+              className="maxBubble bubble"
+              data-test-id="rightBubble"
+            > {maxVal===max ? 'Over' : ''} {type==="height" ? `${Math.floor(maxVal/12)}' ${maxVal%12}"`:maxVal}
             </div>
             <div className="arrowDown maxArrow"></div>
           </div>
-          <div className="slider__right-value">{maxVal}</div>
           <div className="minBubbleContainer" style={{left: `${minPos}vw`}}>
-            <div className="bubble"> {minVal===min ? 'Under' : ''} {type==="height" ? `${Math.floor(minVal/12)}' ${minVal%12}"`:minVal} </div>
+            <div 
+              className="bubble"
+              data-test-id="leftBubble"
+            > {minVal===min ? 'Under' : ''} {type==="height" ? `${Math.floor(minVal/12)}' ${minVal%12}"`:minVal} </div>
             <div className="arrowDown"></div>
           </div>
         </div>

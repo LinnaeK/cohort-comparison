@@ -15,7 +15,7 @@ const Positions = function({selectedPosition, handleRadioClick, sportSelection})
   return (
     <div className="positionContainer">
       <RadioGroup 
-        label="Postions"
+        label="Positions"
         options={positionOptions}
         value={selectedPosition}
         handleRadioClick={(selection) => handleRadioClick(selection)}

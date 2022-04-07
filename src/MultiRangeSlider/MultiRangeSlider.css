@@ -49,21 +49,6 @@
   z-index: 2;
 }
 
-.slider__left-value,
-.slider__right-value {
-  color: rgb(255, 255, 255);
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-.slider__left-value {
-  left: 6px;
-}
-
-.slider__right-value {
-  right: -4px;
-}
-
 .label__left-value {
   margin-top: -80px;
   left: 6px;
