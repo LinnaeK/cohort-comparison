@@ -27,7 +27,6 @@ const Sports = function({value, handleRadioClick}) {
 
   return (
     <div className="sportContainer">
-      <div> {value} </div>
       <RadioGroup 
         label="Sports"
         options={sportOptions}
