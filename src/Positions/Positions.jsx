@@ -1,4 +1,4 @@
-import RadioGroup from '../RadioGroup/RadioGroup.js'
+import RadioGroup from '../RadioGroup/RadioGroup'
 import { useState } from 'react'
 import './Positions.css'
 

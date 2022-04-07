@@ -1,4 +1,4 @@
-import RadioGroup from '../RadioGroup/RadioGroup.js'
+import RadioGroup from '../RadioGroup/RadioGroup.jsx'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
