@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState, useRef } from "react"
 import "./MultiRangeSlider.css"
 
-const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => {
-  const [minVal, setMinVal] = useState(min)
-  const [maxVal, setMaxVal] = useState(max)
+const MultiRangeSlider = ({ min, max, minVal, maxVal, onChange, categoryLabel, step, type }) => {
+  // const [minVal, setMinVal] = useState(min)
+  // const [maxVal, setMaxVal] = useState(max)
   const [minPos, setMinPos] = useState(min*9.4)
   const [maxPos, setMaxPos] = useState(max*9.4)
   const minValRef = useRef(min)
@@ -19,10 +19,11 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
 
   // Reset values to default
   const handleClearClick = () => {
-    setMinVal(min)
+    // setMinVal(min)
     minValRef.current=min
-    setMaxVal(max)
+    // setMaxVal(max)
     maxValRef.current=max
+    onChange(type, { min: min, max: max })
   }
 
   // Set width of the range to decrease from the left side
@@ -72,9 +73,9 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
           value={minVal}
           onChange={(event) => {
             const value = Math.min(Number(event.target.value), maxVal - 1)
-            setMinVal(value)
+            // setMinVal(value)
             minValRef.current = value
-            onChange({ min: minVal, max: maxVal })
+            onChange(type, { min: value, max: maxVal })
           }}
           className="thumb thumb--left"
           style={{ zIndex: minVal > max - 100 && "5" }}
@@ -88,9 +89,9 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
           value={maxVal}
           onChange={(event) => {
             const value = Math.max(Number(event.target.value), minVal + 1)
-            setMaxVal(value)
+            // setMaxVal(value)
             maxValRef.current = value
-            onChange({ min: minVal, max: maxVal })
+            onChange(type, { min: minVal, max: value })
           }}
           className="thumb thumb--right"
           step={step}
@@ -101,13 +102,13 @@ const MultiRangeSlider = ({ min, max, onChange, categoryLabel, step, type }) => 
           <div ref={range} className="slider__range" />
           <div className="slider__left-value">{minVal}</div>
           <div className="maxBubbleContainer" style={{left: `${maxPos}vw`}}>
-            <div className="maxBubble bubble"> {maxVal===max ? 'Over' : ''} {type==="feet-inches" ? `${Math.floor(maxVal/12)}' ${maxVal%12}"`:maxVal}
+            <div className="maxBubble bubble"> {maxVal===max ? 'Over' : ''} {type==="height" ? `${Math.floor(maxVal/12)}' ${maxVal%12}"`:maxVal}
             </div>
             <div className="arrowDown maxArrow"></div>
           </div>
           <div className="slider__right-value">{maxVal}</div>
           <div className="minBubbleContainer" style={{left: `${minPos}vw`}}>
-            <div className="bubble"> {minVal===min ? 'Under' : ''} {type==="feet-inches" ? `${Math.floor(minVal/12)}' ${minVal%12}"`:minVal} </div>
+            <div className="bubble"> {minVal===min ? 'Under' : ''} {type==="height" ? `${Math.floor(minVal/12)}' ${minVal%12}"`:minVal} </div>
             <div className="arrowDown"></div>
           </div>
         </div>
