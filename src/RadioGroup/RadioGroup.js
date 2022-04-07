@@ -15,10 +15,10 @@ const RadioGroup = ({label, options, value, handleRadioClick, displayNumber}) =>
               <input
                 type="radio"
                 value={option}
-                name='sport'
+                name={label}
                 checked={value===option}
                 onChange={option => handleRadioClick(option)}
-                style={{'font-weight': value===option ? 700 : 'normal'}}
+                style={{'fontWeight': value===option ? 700 : 'normal'}}
               /> {options[option]}
             </label> 
           ) :  ''})
