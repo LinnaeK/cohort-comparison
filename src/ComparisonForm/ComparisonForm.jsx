@@ -36,7 +36,6 @@ class ComparisonForm extends React.Component {
   }
 
   handleRangeChange = (rangeType, ranges) => {
-    console.log('handleRangeChange', rangeType, ranges)
     const updatedForm = {
       ...this.state.form,
       [rangeType]: ranges
@@ -47,16 +46,13 @@ class ComparisonForm extends React.Component {
   }
 
   handleRadioClick = (radioType, e) => {
-    console.log('radioType', radioType, 'e', e.target.value)
     const updatedForm = {
       ...this.state.form,
       [radioType]:e.target.value,
     }
-    console.log('updatedForm', updatedForm)
     this.setState({
       form: updatedForm
     })
-    console.log('set', this.state.form.sport)
   }
 
   handleCancelClick = () => {
